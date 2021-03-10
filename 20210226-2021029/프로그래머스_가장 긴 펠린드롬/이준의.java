@@ -13,8 +13,10 @@ class Solution
     {
         int max = -1;
         for(int i = 0; i < s.length(); ++i){
-            if(check(s.substring(0, i + 1))){
-                if(max < i + 1) max = i + 1;
+            for(int j = i; j < s.length() + 1; ++j){
+                if(check(s.substring(i, j))){
+                    if(max < i + 1) max = i + 1;
+                }
             }
         }
         return max;

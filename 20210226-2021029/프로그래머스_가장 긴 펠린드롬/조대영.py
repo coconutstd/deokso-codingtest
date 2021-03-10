@@ -8,7 +8,7 @@ def solution(s):
     ans=-1
     for i in range(0,size):
         for j in range(i,size+1):
-            if palindrome(s[i:j]):
+            if palindrome(s[i:j):
                 if ans<len(s[i:j]):
                     ans=len(s[i:j])
     return ans
