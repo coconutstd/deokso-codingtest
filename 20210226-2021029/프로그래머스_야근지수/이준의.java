@@ -3,19 +3,21 @@ import java.util.*;
 class Solution {
     public long solution(int n, int[] works) {
         long answer = 0;
-        Integer works2[] = Arrays.stream(works).boxed().toArray(Integer[]::new);
-        Arrays.sort(works2, Collections.reverseOrder());
-        int index = 0;
-        int size = works2.length;
-        for(int i = 0; i < n; ++i){
-            if(index == size) index = 0;
-            works2[index++] -= 1;
-        }
-
-
+        PriorityQueue<Integer> pq = new PriorityQueue<>(works.length, Collections.reverseOrder());
         for(int i = 0; i < works.length; ++i){
-            if(works2[i] <= 0) continue;
-            answer += works2[i] * works2[i];
+            pq.offer(works[i]);
+        }
+        for(int i = 0; i < n; ++i){
+            int m = pq.poll();
+            if(m != -1){
+                pq.offer(m - 1);
+            } else{
+                break;
+            }
+        }
+        while(!pq.isEmpty()){
+            int m = pq.poll();
+            if(m > 0) answer += m * m;
         }
         return answer;
     }
