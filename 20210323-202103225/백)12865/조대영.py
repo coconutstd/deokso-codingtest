@@ -3,8 +3,7 @@ temp = [[0] * (k + 1) for _ in range(n + 1)]
 
 for i in range(1, n + 1):
     w, v = map(int, input().split(' '))
-    if w > k:
-        continue
+    
     for j in range(1, k + 1):
         if j < w:
             temp[i][j] = temp[i - 1][j]
