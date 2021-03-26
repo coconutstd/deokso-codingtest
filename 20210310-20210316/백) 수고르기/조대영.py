@@ -1,4 +1,4 @@
-mport sys
+import sys
 n,m=map(int,input().split())
 temp=[]
 for i in range(n):
